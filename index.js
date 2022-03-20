@@ -59,8 +59,8 @@ function setLatLon(name){
     var requestCordURL = 'https://api.openweathermap.org/geo/1.0/direct?q=' + name + ',US&limit=5&appid=bedd3daade36ca94fa2798a1852e1cd6'
 
     fetch(requestCordURL)
-        .then(function (resopnse) {
-            return resopnse.json();
+        .then(function (response) {
+            return response.json();
         })
         .then(function (cordData) {
             lat = cordData[0].lat;
