@@ -44,7 +44,6 @@ function saveHistory(city) {
     if(!citylist.includes(city)){
         citylist.push(city);
     }
-    console.log(citylist);
     localStorage.setItem('city', JSON.stringify(citylist));
 }
 function getHistory() {
@@ -57,7 +56,7 @@ function getHistory() {
 
 function setLatLon(name){
 
-    var requestCordURL = 'http://api.openweathermap.org/geo/1.0/direct?q=' + name + ',US&limit=5&appid=bedd3daade36ca94fa2798a1852e1cd6'
+    var requestCordURL = 'https://api.openweathermap.org/geo/1.0/direct?q=' + name + ',US&limit=5&appid=bedd3daade36ca94fa2798a1852e1cd6'
 
     fetch(requestCordURL)
         .then(function (resopnse) {
@@ -83,9 +82,8 @@ function setLatLon(name){
 
                     var cityEl = document.createElement("h2");
                     cityEl.textContent = cityName + " (" + moment().add(0, "d").format("M/D/YYYY") + ")";
-                    console.log(weatherData);
                     var weatherIcon = document.createElement("img");
-                    weatherIcon.setAttribute("src", "http://openweathermap.org/img/wn/" + weatherData.current.weather[0].icon + "@2x.png");
+                    weatherIcon.setAttribute("src", "https://openweathermap.org/img/wn/" + weatherData.current.weather[0].icon + "@2x.png");
                     cityEl.append(weatherIcon);
                     var tempEl = document.createElement("p");
                     tempEl.textContent = "Temp: " + Math.round(((weatherData.current.temp - 273.15) * 9 / 5) + 32) + "\u00B0 F";
@@ -116,7 +114,7 @@ function setLatLon(name){
                         var humid = document.createElement('p');
                         humid.textContent = "Humidity: " + weatherData.daily[i].humidity + "%";
                         var img = document.createElement("img");
-                        img.setAttribute("src", "http://openweathermap.org/img/wn/" + weatherData.daily[i].weather[0].icon + "@2x.png")
+                        img.setAttribute("src", "https://openweathermap.org/img/wn/" + weatherData.daily[i].weather[0].icon + "@2x.png")
 
                         var forecastCardEl = document.createElement("div");
                         forecastCardEl.setAttribute("class", "forecast-card");
